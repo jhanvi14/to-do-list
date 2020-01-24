@@ -1,0 +1,32 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row>
+        <span style="font-size:30px">My To-Do-App</span>
+    </mat-toolbar-row>
+    </mat-toolbar>
+<br>
+<div class="div1">
+    <mat-form-field class="example-full-width" color="warn">
+      <input matInput placeholder="Enter Title..." [(ngModel)]="title">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width"color="warn">
+      <input matInput placeholder="Enter Content..." [(ngModel)]="content">
+    </mat-form-field>
+  </div>
+  
+  <br>
+  
+  <div class="example-button-row">
+    <button mat-fab color="warn" (click)="AddToList(title.value,content.value)">ADD</button>
+  </div>
+  <br><br>
+  <mat-accordion multi="true" *ngIf="todos.length > 0">
+      <mat-expansion-panel *ngFor="let l of todos,index as i">
+        <mat-expansion-panel-header>
+            <mat-panel-title>{{l.label}} </mat-panel-title>
+             <button mat-mini-fab color="warn" (click)="todos.splice(i,1)" class="button1">Del</button>
+      </mat-expansion-panel-header>
+      <p>{{l.msg}}</p>  
+    </mat-expansion-panel>
+  </mat-accordion>
+
